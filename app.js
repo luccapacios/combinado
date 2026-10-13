@@ -572,6 +572,7 @@
       case 'teto-ok': marcar(); E.datas.enviado = E.datas.fechado = true; E.teto.valor = 600; E.teto.enviado = true; r = 'teto'; break;
       case 'meio': marcar(); E.datas.enviado = E.datas.fechado = true; break;
       case 'casas': marcar(); E.datas.enviado = E.datas.fechado = true; E.teto.enviado = true; E.casa.voto = 'c1'; r = 'casas'; break;
+      case 'casas-fora': marcar(); E.datas.enviado = E.datas.fechado = true; E.teto.valor = 300; E.teto.enviado = true; r = 'casas'; break;
       case 'sinal': marcar(); E.datas.enviado = E.datas.fechado = true; E.teto.enviado = true; E.casa.voto = 'c1'; E.casa.fechado = true; r = 'sinal'; break;
       case 'combinado':
       case 'resumo':
