@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E8">
+<title>Combinado</title>
+<meta name="description" content="Protótipo navegável do Combinado: o grupo decide a viagem sem ninguém expor quanto pode gastar e sem ninguém precisar cobrar.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B6B5D'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' fill='none' stroke='%23F5F1E8' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="palco">
+  <aside class="sobre" aria-label="Sobre este protótipo">
+    <p class="sobre-marca"><span class="selo" aria-hidden="true"></span>Combinado</p>
+    <h1 class="sobre-tit">A viagem sai do grupo.</h1>
+    <p class="sobre-txt">Um app para o grupo de amigos fechar data, orçamento e casa sem ninguém expor quanto pode gastar e sem ninguém precisar cobrar ninguém.</p>
+    <ol class="sobre-passos">
+      <li>Comece pela tela da viagem: duas decisões esperam por você.</li>
+      <li>Marque os fins de semana e diga seu teto. Ele fica em segredo.</li>
+      <li>Vote na casa, pague o sinal e veja o que ficou combinado.</li>
+    </ol>
+    <p class="sobre-nota">Os prazos fecham na hora, por um botão de demonstração. Nenhum pagamento é real.</p>
+    <button type="button" class="link-reset" data-acao="recomecar">Recomeçar a demonstração</button>
+    <p class="sobre-cred">Projeto em UX Design · Senac São Paulo<br>Julyana Morais e Lucca Pacios · 2026</p>
+  </aside>
+  <div class="moldura">
+    <main id="app" class="app" tabindex="-1"></main>
+    <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
