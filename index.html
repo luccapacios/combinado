@@ -3,32 +3,57 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F5F1E8">
+<meta name="theme-color" content="#FFF8F1">
 <title>Combinado</title>
 <meta name="description" content="Protótipo navegável do Combinado: o grupo decide a viagem sem ninguém expor quanto pode gastar e sem ninguém precisar cobrar.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B6B5D'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' fill='none' stroke='%23F5F1E8' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23FFC23D'/%3E%3Cpath d='M9.5 16.5l4.5 4.5L23 11.5' fill='none' stroke='%231E2629' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fontes/Unbounded-800.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fontes/DMSans-400.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="estilo-fluxos.css">
 </head>
 <body>
 <div class="palco">
   <aside class="sobre" aria-label="Sobre este protótipo">
-    <p class="sobre-marca"><span class="selo" aria-hidden="true"></span>Combinado</p>
-    <h1 class="sobre-tit">A viagem sai do grupo.</h1>
+    <p class="marca">c<span class="s" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#1E2629" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>mbinado</p>
+    <h1 class="sobre-tit">A viagem <em>sai do grupo.</em></h1>
     <p class="sobre-txt">Um app para o grupo de amigos fechar data, orçamento e casa sem ninguém expor quanto pode gastar e sem ninguém precisar cobrar ninguém.</p>
     <ol class="sobre-passos">
-      <li>Comece pela tela da viagem: duas decisões esperam por você.</li>
-      <li>Marque os fins de semana e diga seu teto. Ele fica em segredo.</li>
+      <li>Abra o convite da Ju pela notificação, ou crie uma conta com o código 482 915.</li>
+      <li>Marque os fins de semana e guarde seu teto. Ele fica em segredo.</li>
       <li>Vote na casa, pague o sinal e veja o que ficou combinado.</li>
     </ol>
-    <p class="sobre-nota">Os prazos fecham na hora, por um botão de demonstração. Nenhum pagamento é real.</p>
-    <button type="button" class="link-reset" data-acao="recomecar">Recomeçar a demonstração</button>
-    <p class="sobre-cred">Projeto em UX Design · Senac São Paulo<br>Julyana Morais e Lucca Pacios · 2026</p>
+    <p class="sobre-nota">Os prazos fecham por um botão de demonstração. Nenhum pagamento é real. As abas Atividade, Cofre e Perfil mudam conforme você avança, e dá para criar uma viagem nova.</p>
+    <p style="margin-top:14px"><button type="button" class="link" data-acao="recomecar">Recomeçar a demonstração</button></p>
+    <div class="sobre-cred">
+      <p>Projeto em UX Design · Senac São Paulo<br>Julyana Morais e Lucca Pacios · 2026</p>
+      <details><summary>Créditos das fotos</summary>
+        <ul id="creditos"></ul>
+      </details>
+    </div>
   </aside>
   <div class="moldura">
+    <div class="status" id="status" aria-hidden="true">
+      <span>9:41</span>
+      <span class="ics">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M8 2.2c2.3 0 4.4.9 6 2.4l1.2-1.3A10.4 10.4 0 0 0 8 .4 10.4 10.4 0 0 0 .8 3.3L2 4.6a8.6 8.6 0 0 1 6-2.4zm0 3.6c1.3 0 2.5.5 3.4 1.3l1.2-1.3A6.7 6.7 0 0 0 8 4a6.7 6.7 0 0 0-4.6 1.8l1.2 1.3c.9-.8 2.1-1.3 3.4-1.3zM8 9.4a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6z"/></svg>
+        <svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke="currentColor" opacity=".45"/><rect x="2.5" y="2.5" width="17" height="8" rx="2" fill="currentColor"/><path d="M25 4.5v4a2 2 0 0 0 0-4z" fill="currentColor" opacity=".45"/></svg>
+      </span>
+    </div>
     <main id="app" class="app" tabindex="-1"></main>
+    <div id="dock" class="dock"></div>
+    <nav id="tab" class="tab" aria-label="Seções da viagem"></nav>
+    <div class="modal" id="modal" hidden></div>
     <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
   </div>
 </div>
-<script src="app.js"></script>
+<script src="dados.js"></script>
+<script src="icones.js"></script>
+<script src="nucleo.js"></script>
+<script src="telas-conta.js"></script>
+<script src="telas-viagem.js"></script>
+<script src="telas-perfil.js"></script>
+<script src="inicio.js"></script>
 </body>
 </html>

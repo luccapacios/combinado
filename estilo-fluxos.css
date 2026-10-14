@@ -1,0 +1,156 @@
+/* Componentes dos fluxos de conta, início, perfil e criação de viagem. */
+
+/* ================= conta: abertura, formulários e código ================= */
+.abertura{justify-content:space-between;padding-top:110px}
+.push{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:22px;background:rgba(255,255,255,.16);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.25);color:#fff;text-align:left}
+.push .rosto{border-color:transparent}
+.push > span:not(.rosto){flex:1;min-width:0}
+.push b{display:block;font-weight:700;font-size:14.5px;line-height:1.25}
+.push small{display:block;font-size:12.5px;color:rgba(255,255,255,.88);margin-top:2px}
+.btn-vidro{margin-top:14px;width:100%;height:50px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);color:#fff;font:700 15px/1 var(--texto);text-align:center;background:rgba(255,255,255,.06)}
+.btn-vidro:hover{background:rgba(255,255,255,.14)}
+.form{margin-top:6px}
+.campo .erro,.erro{margin-top:6px;font-size:13px;font-weight:500;color:#B42318}
+.campo .dica{margin-top:6px;font-size:12.5px;color:var(--tinta-2)}
+.campo .opc{text-transform:none;letter-spacing:0;font-weight:500;color:var(--tinta-3);margin-left:4px}
+.com-erro input{box-shadow:inset 0 0 0 2px #D92D20!important}
+.aceite{display:flex;gap:12px;align-items:flex-start;margin-top:18px;font-size:13.5px;color:var(--tinta-2)}
+.aceite a{color:var(--sol-txt);font-weight:700}
+.caixa{width:24px;height:24px;flex:none;border-radius:8px;display:grid;place-items:center;box-shadow:inset 0 0 0 2px var(--fio-2);background:#fff}
+.caixa[aria-checked="true"]{background:var(--sol-b);box-shadow:none}
+.aceite.com-erro .caixa{box-shadow:inset 0 0 0 2px #D92D20}
+.troca{margin-top:18px;font-size:14px;color:var(--tinta-2);text-align:center}
+.troca .link{font-size:14px}
+.codigo{position:relative;margin-top:22px;cursor:text}
+.codigo input{position:absolute;inset:0;width:100%;height:100%;opacity:0;font-size:16px}
+.caixas{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.caixas span{height:58px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--fio-2);display:grid;place-items:center;font:800 24px/1 var(--display)}
+.caixas span.atual{box-shadow:inset 0 0 0 2px var(--sol-b)}
+.caixas span.cheia{box-shadow:inset 0 0 0 1.5px var(--tinta-3)}
+.codigo.com-erro .caixas span{box-shadow:inset 0 0 0 2px #D92D20}
+.dica-demo{display:flex;gap:8px;align-items:center;margin-top:16px;padding:12px 14px;border-radius:16px;background:var(--amarelo);color:var(--amarelo-txt);font-size:13.5px}
+.dica-demo b{font-weight:700;letter-spacing:.05em}
+.gira{width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;animation:gira .8s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.avatar-ed{display:flex;align-items:center;gap:18px;margin-top:20px}
+.rosto.xl{width:72px;height:72px;font-size:22px;border:0;margin:0}
+.cores{display:flex;gap:10px;flex-wrap:wrap}
+.cores button{width:32px;height:32px;border-radius:50%;box-shadow:0 0 0 2px var(--creme)}
+.cores button[aria-checked="true"]{box-shadow:0 0 0 2px var(--creme),0 0 0 4.5px var(--tinta)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{padding:10px 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--fio-2);font:700 13.5px/1 var(--texto);color:var(--tinta-2)}
+.chips button[aria-checked="true"]{background:var(--sol-fundo);box-shadow:inset 0 0 0 1.5px var(--sol-b);color:var(--sol-txt)}
+.como{display:flex;align-items:center;gap:8px;margin-top:20px;font-size:15px}
+.como .rosto{margin:0}
+.como b{font-weight:700}
+
+/* ================= início ================= */
+.topo-inicio{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.eu .rosto{margin:0;border-color:var(--creme)}
+.aviso-fixo{display:flex;gap:12px;margin-top:16px;padding:14px;border-radius:20px;background:var(--amarelo);color:var(--amarelo-txt);font-size:13.5px}
+.aviso-fixo svg{flex:none;margin-top:1px}
+.aviso-fixo b{display:block;font-weight:700}
+.aviso-fixo .link{color:var(--amarelo-txt);margin-top:6px;display:inline-block}
+.convite-card{display:flex;align-items:center;gap:14px;width:100%;padding:10px 14px 10px 10px;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--sol-b),var(--sombra)}
+.convite-card .foto{width:76px;height:76px;flex:none;border-radius:18px;background:#ccc center/cover}
+.convite-card .tx{flex:1;min-width:0}
+.convite-card b{display:block;font:800 16px/1.15 var(--display);letter-spacing:-.02em;margin-top:3px}
+.convite-card small{display:block;font-size:12.5px;color:var(--tinta-2);margin-top:3px}
+.viagem-card{display:block;width:100%;border-radius:26px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px var(--fio),var(--sombra);text-align:left}
+.viagem-card .foto{position:relative;display:block;height:150px;background:#ccc center 55%/cover}
+.viagem-card .foto .pilula{position:absolute;left:12px;bottom:12px}
+.viagem-card .corpo{display:block;padding:14px 16px 16px}
+.viagem-card b{display:block;font:800 18px/1.15 var(--display);letter-spacing:-.025em}
+.viagem-card small{display:block;font-size:13px;color:var(--tinta-2);margin-top:3px}
+.viagem-card .passos{margin-top:12px}
+.viagem-card .estado{display:block;margin-top:10px;font-weight:700;font-size:13.5px;color:var(--mar-txt)}
+.viagem-card .estado.vez{color:var(--sol-txt)}
+.viagem-card.apagada .foto,.capa.apagada{filter:grayscale(.85)}
+.lista{padding:4px 14px}
+.lin{display:flex;align-items:center;gap:12px;width:100%;padding:12px 0;border-top:1px solid var(--fio);text-align:left}
+.lin:first-child{border-top:0}
+.lin .mini{width:50px;height:50px;flex:none;border-radius:14px;background:#ccc center/cover}
+.lin .tx{flex:1;min-width:0}
+.lin b{display:block;font-weight:700;font-size:14.5px}
+.lin small{display:block;font-size:12.5px;color:var(--tinta-2);margin-top:2px}
+.numeros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.numeros.mt{margin-top:18px}
+.numeros p{padding:14px 12px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px var(--fio);font-size:12px;line-height:1.3;color:var(--tinta-2)}
+.numeros b{display:block;font:800 21px/1.1 var(--display);letter-spacing:-.03em;color:var(--tinta);margin-bottom:4px}
+.borradas{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.borradas span{height:90px;border-radius:18px;background:#ccc center/cover;filter:blur(3px) saturate(.7);opacity:.75}
+
+/* capa: botões sobre a foto */
+.capa-top .voltar.vidro,.festa-top .voltar.vidro{background:rgba(255,255,255,.18);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.acoes-capa{display:flex;gap:8px}
+.pilula.redonda{width:36px;height:36px;padding:0;justify-content:center}
+.festa{padding-top:52px}
+.festa-top{margin-bottom:14px}
+
+/* ================= menus, chaves e janela ================= */
+.menu-tit{font:700 12px/1 var(--texto);letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-3);margin:24px 0 8px}
+.menu{background:#fff;border-radius:22px;box-shadow:inset 0 0 0 1px var(--fio);padding:4px 14px}
+.menu-it{display:flex;align-items:center;gap:12px;width:100%;padding:13px 0;border-top:1px solid var(--fio);text-align:left}
+.menu-it:first-child{border-top:0}
+.menu-it .ic{width:36px;height:36px;flex:none;border-radius:12px;display:grid;place-items:center;background:var(--sol-fundo);color:var(--sol-txt)}
+.menu-it .tx{flex:1;font-weight:700;font-size:14.5px}
+.menu-it .tx small{display:block;font-weight:400;font-size:12.5px;color:var(--tinta-2);margin-top:1px}
+.menu-it.perigo{color:#B42318}
+.menu-it.perigo .ic{background:#FDECEA;color:#B42318}
+.opcoes{padding:4px 16px}
+.opcao{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--fio)}
+.opcao:first-child{border-top:0}
+.opcao .txt{flex:1}
+.opcao b{display:block;font-weight:700;font-size:14.5px}
+.opcao small{display:block;font-size:12.5px;color:var(--tinta-2);margin-top:2px;line-height:1.35}
+.chave{position:relative;width:50px;height:30px;flex:none;border-radius:999px;background:#CFC5BB;transition:background .18s}
+.chave i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .18s}
+.chave[aria-checked="true"]{background:var(--mar)}
+.chave[aria-checked="true"] i{transform:translateX(20px)}
+.perfil-cab{display:flex;align-items:center;gap:16px}
+.versao{margin-top:22px;text-align:center;font-size:12px;color:var(--tinta-3)}
+.cta.perigo{background:#C4321F;box-shadow:0 10px 24px rgba(196,50,31,.25)}
+.btn2.perigo{color:#B42318}
+.modal{position:absolute;inset:0;z-index:10;background:rgba(30,38,41,0);display:flex;align-items:flex-end;transition:background .2s}
+.modal[hidden]{display:none}
+.modal.on{background:rgba(30,38,41,.45)}
+.sheet{width:100%;padding:10px 20px 34px;border-radius:30px 30px 0 0;background:var(--creme);transform:translateY(100%);transition:transform .24s cubic-bezier(.2,.9,.3,1)}
+.modal.on .sheet{transform:none}
+.pega{display:block;width:40px;height:5px;border-radius:3px;background:var(--fio-2);margin:0 auto 16px}
+.sheet-bts{display:grid;gap:10px;margin-top:20px}
+.faq{margin-top:18px;display:grid;gap:10px}
+.faq details{background:#fff;border-radius:20px;box-shadow:inset 0 0 0 1px var(--fio);padding:0 16px}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 0;font-weight:700;font-size:14.5px;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{flex:none;transition:transform .18s}
+.faq details[open] summary svg{transform:rotate(90deg)}
+.faq details p{padding:0 0 15px;font-size:14px;color:var(--tinta-2);line-height:1.5}
+.texto{font-size:14.5px;line-height:1.55;color:var(--tinta-2)}
+.pessoas.hist li .ic{width:38px;height:38px;flex:none;border-radius:14px;display:grid;place-items:center}
+.pessoas.hist b{font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ================= assistente de nova viagem ================= */
+.capas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.capas button{position:relative;height:76px;border-radius:16px;background:#ccc center/cover}
+.capas button[aria-checked="true"]{box-shadow:0 0 0 3px var(--creme),0 0 0 5.5px var(--sol-b)}
+.capas button span{position:absolute;right:6px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--sol-b);display:grid;place-items:center}
+.fim-sel{display:flex;align-items:center;gap:14px;width:100%;padding:15px 14px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px var(--fio);text-align:left}
+.fim-sel[aria-checked="true"]{box-shadow:inset 0 0 0 2px var(--sol-b);background:var(--sol-fundo)}
+.fim-sel[aria-checked="true"] .caixa{background:var(--sol-b);box-shadow:none}
+.fim-sel b{display:block;font:800 15px/1.2 var(--display);letter-spacing:-.02em}
+.fim-sel small{display:block;font-size:12.5px;color:var(--tinta-2);margin-top:2px}
+.regra-fixa{display:flex;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--fio);font-size:14px;font-weight:500}
+.regra-fixa:first-child{border-top:0}
+@media (prefers-reduced-motion:reduce){.chave,.chave i,.sheet,.modal,.faq summary svg{transition:none}.gira{animation:none}}
+
+/* nas capturas das figuras, a barra de status aparece mesmo na largura de celular */
+body.solo .status{display:flex!important}
+
+/* a etiqueta de nota fica no canto, sem herdar a posição da etiqueta de faixa */
+.casa .foto .tag.nf{left:auto;top:auto}
+/* o conteúdo some suavemente atrás do botão ancorado */
+.dock::before{content:"";position:absolute;left:-18px;right:-18px;top:-26px;bottom:calc(-1 * var(--dock-gap));z-index:-1;
+  background:linear-gradient(rgba(255,248,241,0),var(--creme) 46%);pointer-events:none}
+.dock.sem-tab::before{bottom:-30px}
+.dock.sobre-foto::before{display:none}
