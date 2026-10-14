@@ -36,8 +36,8 @@
 .avatar-ed{display:flex;align-items:center;gap:18px;margin-top:20px}
 .rosto.xl{width:72px;height:72px;font-size:22px;border:0;margin:0}
 .cores{display:flex;gap:10px;flex-wrap:wrap}
-.cores button{width:32px;height:32px;border-radius:50%;box-shadow:0 0 0 2px var(--creme)}
-.cores button[aria-checked="true"]{box-shadow:0 0 0 2px var(--creme),0 0 0 4.5px var(--tinta)}
+.cores button{width:32px;height:32px;border-radius:50%;box-shadow:0 0 0 2px var(--fundo)}
+.cores button[aria-checked="true"]{box-shadow:0 0 0 2px var(--fundo),0 0 0 4.5px var(--tinta)}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chips button{padding:10px 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--fio-2);font:700 13.5px/1 var(--texto);color:var(--tinta-2)}
 .chips button[aria-checked="true"]{background:var(--sol-fundo);box-shadow:inset 0 0 0 1.5px var(--sol-b);color:var(--sol-txt)}
@@ -47,7 +47,7 @@
 
 /* ================= início ================= */
 .topo-inicio{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.eu .rosto{margin:0;border-color:var(--creme)}
+.eu .rosto{margin:0;border-color:var(--fundo)}
 .aviso-fixo{display:flex;gap:12px;margin-top:16px;padding:14px;border-radius:20px;background:var(--amarelo);color:var(--amarelo-txt);font-size:13.5px}
 .aviso-fixo svg{flex:none;margin-top:1px}
 .aviso-fixo b{display:block;font-weight:700}
@@ -115,7 +115,7 @@
 .modal{position:absolute;inset:0;z-index:10;background:rgba(30,38,41,0);display:flex;align-items:flex-end;transition:background .2s}
 .modal[hidden]{display:none}
 .modal.on{background:rgba(30,38,41,.45)}
-.sheet{width:100%;padding:10px 20px 34px;border-radius:30px 30px 0 0;background:var(--creme);transform:translateY(100%);transition:transform .24s cubic-bezier(.2,.9,.3,1)}
+.sheet{width:100%;padding:10px 20px 34px;border-radius:30px 30px 0 0;background:var(--fundo);transform:translateY(100%);transition:transform .24s cubic-bezier(.2,.9,.3,1)}
 .modal.on .sheet{transform:none}
 .pega{display:block;width:40px;height:5px;border-radius:3px;background:var(--fio-2);margin:0 auto 16px}
 .sheet-bts{display:grid;gap:10px;margin-top:20px}
@@ -133,7 +133,7 @@
 /* ================= assistente de nova viagem ================= */
 .capas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .capas button{position:relative;height:76px;border-radius:16px;background:#ccc center/cover}
-.capas button[aria-checked="true"]{box-shadow:0 0 0 3px var(--creme),0 0 0 5.5px var(--sol-b)}
+.capas button[aria-checked="true"]{box-shadow:0 0 0 3px var(--fundo),0 0 0 5.5px var(--sol-b)}
 .capas button span{position:absolute;right:6px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--brasa-b);display:grid;place-items:center}
 .fim-sel{display:flex;align-items:center;gap:14px;width:100%;padding:15px 14px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px var(--fio);text-align:left}
 .fim-sel[aria-checked="true"]{box-shadow:inset 0 0 0 2px var(--sol-b);background:var(--sol-fundo)}
@@ -151,7 +151,7 @@ body.solo .status{display:flex!important}
 .casa .foto .tag.nf{left:auto;top:auto}
 /* o conteúdo some suavemente atrás do botão ancorado */
 .dock::before{content:"";position:absolute;left:-18px;right:-18px;top:-26px;bottom:calc(-1 * var(--dock-gap));z-index:-1;
-  background:linear-gradient(rgba(255,248,241,0),var(--creme) 46%);pointer-events:none}
+  background:linear-gradient(rgba(255,255,255,0),var(--fundo) 46%);pointer-events:none}
 .dock.sem-tab::before{bottom:-30px}
 .dock.sobre-foto::before{display:none}
 .sheet:focus{outline:none}

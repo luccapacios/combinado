@@ -145,7 +145,7 @@ window.C = (function () {
   // quando a foto do topo sai de cena, a barra de status ganha fundo e texto escuro
   function ajustarStatus() {
     var capa = app && app.querySelector('.capa, .galeria, .festa, .abertura');
-    var limite = capa ? capa.offsetHeight - 82 : 0;   // a folha creme sobe uns 36 px sobre a foto
+    var limite = capa ? capa.offsetHeight - 82 : 0;   // a folha branca sobe uns 36 px sobre a foto
     var rolou = app && app.scrollTop > limite;
     status.className = 'status' + (statusSobreFoto && !rolou ? ' claro' : ' fundo');
   }

@@ -14,7 +14,7 @@
   --mar:#0F5257; --mar-escuro:#0B3F43; --mar-claro:#D7F1EE; --mar-txt:#0D4C47;
   /* tinta e base */
   --tinta:#1E2629; --tinta-2:#556063; --tinta-3:#646E71;
-  --creme:#FFF8F1; --cartao:#FFFFFF; --fio:#F1E6DB; --fio-2:#E6D8CA;
+  --fundo:#FFFFFF; --creme:#FFF8F1; --cartao:#FFFFFF; --fio:#F1E6DB; --fio-2:#E6D8CA;
   /* acompanhantes */
   --pessego:#FFE3D1; --pessego-txt:#7A2E0B;
   --amarelo:#FFE7A3; --amarelo-txt:#5E4300; --sol-ponto:#FFC23D;
@@ -54,12 +54,12 @@ img{display:block;max-width:100%}
 .sobre-cred ul{list-style:none;margin-top:6px}
 
 .moldura{position:relative;width:390px;height:min(844px,calc(100vh - 56px));min-height:600px;flex:none;border-radius:48px;overflow:hidden;overflow:clip;
-  background:var(--creme);box-shadow:0 0 0 10px #1E2629,0 0 0 11px #3A4542,0 34px 70px -24px rgba(30,38,41,.5)}
-.app{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;outline:none;background:var(--creme)}
+  background:var(--fundo);box-shadow:0 0 0 10px #1E2629,0 0 0 11px #3A4542,0 34px 70px -24px rgba(30,38,41,.5)}
+.app{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;outline:none;background:var(--fundo)}
 .app::-webkit-scrollbar{display:none}
 
 @media (max-width:860px){
-  body{background:var(--creme)}
+  body{background:var(--fundo)}
   .palco{display:block;padding:0}
   .sobre{display:none}
   .moldura{width:100%;height:100dvh;min-height:0;border-radius:0;box-shadow:none}
@@ -75,7 +75,7 @@ body.solo.alto .app{position:static;overflow:visible}
 .status{position:absolute;top:0;left:0;right:0;height:46px;z-index:8;display:flex;align-items:center;justify-content:space-between;padding:6px 30px 0 34px;
   font:700 15px/1 var(--texto);letter-spacing:-.01em;color:var(--tinta);pointer-events:none;transition:color .2s,background-color .2s}
 .status.claro{color:#fff}
-.status.fundo{background:var(--creme);box-shadow:0 8px 10px -6px rgba(255,248,241,1)}
+.status.fundo{background:var(--fundo);box-shadow:0 8px 10px -6px #fff}
 .status .ics{display:flex;gap:6px;align-items:center}
 
 /* ================= botão ancorado e barra de abas ================= */
@@ -107,7 +107,7 @@ body.solo.alto .app{position:static;overflow:visible}
 .tela.sem-tab{padding-bottom:120px}
 .tela.so-tab{padding-bottom:calc(var(--tab-h) + 28px)}
 .barra{position:sticky;top:0;z-index:4;display:flex;align-items:center;gap:10px;margin:0 -20px;padding:52px 16px 10px;
-  background:linear-gradient(var(--creme) 82%,rgba(255,248,241,0))}
+  background:linear-gradient(var(--fundo) 82%,rgba(255,255,255,0))}
 .voltar{width:40px;height:40px;flex:none;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--fio);display:grid;place-items:center}
 .voltar:hover{box-shadow:inset 0 0 0 1px var(--fio-2)}
 .barra-tit{font:700 13px/1.2 var(--texto);color:var(--tinta-2)}
@@ -132,7 +132,7 @@ body.solo.alto .app{position:static;overflow:visible}
 
 /* avatares */
 .rostos{display:flex;align-items:center}
-.rosto{position:relative;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 var(--texto);border:2.5px solid var(--creme);margin-left:-9px;flex:none}
+.rosto{position:relative;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 var(--texto);border:2.5px solid var(--fundo);margin-left:-9px;flex:none}
 .rosto:first-child{margin-left:0}
 .rosto.pq{width:26px;height:26px;font-size:9.5px;border-width:2px;margin-left:-7px}
 .rosto.gd{width:44px;height:44px;font-size:13px;margin-left:0}
@@ -182,7 +182,7 @@ body.solo.alto .app{position:static;overflow:visible}
 .capa-tit{position:absolute;left:20px;right:20px;bottom:62px}
 .capa-tit .k{color:rgba(255,255,255,.92)}
 .capa-tit h1{font:800 37px/.98 var(--display);letter-spacing:-.04em;margin-top:8px}
-.folha{position:relative;margin:-36px -20px 0;padding:22px 20px 0;background:var(--creme);border-radius:30px 30px 0 0}
+.folha{position:relative;margin:-36px -20px 0;padding:22px 20px 0;background:var(--fundo);border-radius:30px 30px 0 0}
 .resp{display:flex;align-items:center;gap:10px}
 .resp small{font-size:13px;color:var(--tinta-2);line-height:1.3}
 .passos{display:flex;gap:6px;margin-top:16px}
