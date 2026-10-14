@@ -140,7 +140,15 @@ window.C = (function () {
   function acao(nome, fn) { ACOES[nome] = fn; }
 
   var PUBLICAS = { abertura: 1, cadastro: 1, entrar: 1, codigo: 1, 'bem-vindo': 1, convite: 1, termos: 1 };
-  var app, dock, tab, status, modalEl, rotaAnterior = null, limpezas = [];
+  var app, dock, tab, status, modalEl, rotaAnterior = null, limpezas = [], statusSobreFoto = false;
+
+  // quando a foto do topo sai de cena, a barra de status ganha fundo e texto escuro
+  function ajustarStatus() {
+    var capa = app && app.querySelector('.capa, .galeria, .festa, .abertura');
+    var limite = capa ? capa.offsetHeight - 82 : 0;   // a folha creme sobe uns 36 px sobre a foto
+    var rolou = app && app.scrollTop > limite;
+    status.className = 'status' + (statusSobreFoto && !rolou ? ' claro' : ' fundo');
+  }
 
   function rota() {
     var r = (location.hash || '').replace(/^#\/?/, '').split('/');
@@ -189,7 +197,9 @@ window.C = (function () {
     dock.innerHTML = t.dock || '';
     dock.className = 'dock' + (t.semTab ? ' sem-tab' : '') + (t.semTab && t.claro ? ' sobre-foto' : '');
     desenharTab(t.semTab ? null : (t.tab || 'inicio'));
-    status.className = 'status' + (t.claro ? ' claro' : '');
+    // barra de status: sobre foto fica transparente e clara; nas demais, tem fundo próprio
+    statusSobreFoto = !!t.claro;
+    ajustarStatus();
     document.title = (OPC[r.nome].titulo ? OPC[r.nome].titulo + ' · ' : '') + 'Combinado';
     app.parentNode.scrollTop = 0; // a moldura nunca rola, só a tela dentro dela
     var k = r.nome + '/' + r.param;
@@ -274,6 +284,7 @@ window.C = (function () {
   function iniciar() {
     app = document.getElementById('app'); dock = document.getElementById('dock'); tab = document.getElementById('tab');
     status = document.getElementById('status'); modalEl = document.getElementById('modal');
+    app.addEventListener('scroll', ajustarStatus, { passive: true });
 
     document.addEventListener('click', function (ev) {
       if (ev.target === modalEl) { fecharModal(); return; }
