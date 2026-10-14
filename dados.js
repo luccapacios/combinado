@@ -3,7 +3,7 @@ window.CMB = (function () {
   'use strict';
 
   var PESSOAS = {
-    voce: { nome: 'Você', ini: 'VC', bg: '#F2545B', fg: '#FFFFFF' },
+    voce: { nome: 'Você', ini: 'VC', bg: '#C92B45', fg: '#FFFFFF' },
     ju:   { nome: 'Ju',   ini: 'JU', bg: '#FFE3D1', fg: '#7A2E0B' },
     rafa: { nome: 'Rafa', ini: 'RA', bg: '#D6E6FF', fg: '#1D3F7A' },
     bia:  { nome: 'Bia',  ini: 'BI', bg: '#D7F1EE', fg: '#0D4C47' },

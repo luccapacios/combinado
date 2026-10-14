@@ -4,7 +4,7 @@
   var D = C.D, I = C.I, E = C.E;
   var erros = {};          // erros de validação da tela atual (não persistem)
   var timerReenvio = null;
-  var CORES = ['#F2545B', '#FF8A3D', '#0F5257', '#3E6FD8', '#8B4FB8', '#1E2629'];
+  var CORES = ['#C92B45', '#B5470F', '#0F5257', '#3557C4', '#7B3FA6', '#1E2629'];
 
   function campo(id, rotulo, attrs, valor, dica) {
     var e = erros[id];

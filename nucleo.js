@@ -11,7 +11,7 @@ window.C = (function () {
   function inicial() {
     return {
       sessao: 'fora',                     // fora | convidado | conta
-      conta: { nome: '', celular: '', cor: '#F2545B', pix: '', pixTipo: 'celular' },
+      conta: { nome: '', celular: '', cor: '#C92B45', pix: '', pixTipo: 'celular' },
       fluxo: 'cadastro',                  // para onde a tela de código leva
       entrou: false, saiu: false,
       datas: { marc: {}, enviado: false, fechado: false },
@@ -165,7 +165,7 @@ window.C = (function () {
     var novas = Math.max(0, eventos().length - (E.vistoAtividade || 0));
     tab.innerHTML = [['inicio', '', 'casa', 'Início'], ['atividade', 'atividade', 'sino', 'Atividade'], ['cofre', 'cofre', 'cofre', 'Cofre'], ['perfil', 'perfil', 'usuario', 'Perfil']].map(function (t) {
       var on = t[0] === ativa;
-      return '<a href="#/' + t[1] + '"' + (on ? ' aria-current="page"' : '') + '><span class="ic">' + I(t[2], 22, on ? '#C2410C' : '#737D80', 2.1) +
+      return '<a href="#/' + t[1] + '"' + (on ? ' aria-current="page"' : '') + '><span class="ic">' + I(t[2], 22, on ? '#AE3A0B' : '#646E71', 2.1) +
         (t[0] === 'atividade' && novas && !on ? '<i class="bolinha"></i>' : '') + '</span>' + t[3] + '</a>';
     }).join('');
   }
@@ -217,7 +217,7 @@ window.C = (function () {
       '<h2 class="h2" id="m-tit">' + m.titulo + '</h2>' + (m.texto ? '<p class="lead">' + m.texto + '</p>' : '');
     if (m.opcoes) {
       h += '<div class="menu" style="margin-top:14px">' + m.opcoes.map(function (o) {
-        return '<button class="menu-it' + (o[3] ? ' perigo' : '') + '" ' + o[2] + '><span class="ic">' + I(o[0], 19, 'currentColor', 2.1) + '</span><span class="tx">' + o[1] + '</span>' + I('seta', 16, '#737D80', 2.4) + '</button>';
+        return '<button class="menu-it' + (o[3] ? ' perigo' : '') + '" ' + o[2] + '><span class="ic">' + I(o[0], 19, 'currentColor', 2.1) + '</span><span class="tx">' + o[1] + '</span>' + I('seta', 16, '#646E71', 2.4) + '</button>';
       }).join('') + '</div><button class="btn2" style="margin-top:12px" data-acao="fechar-modal">Fechar</button>';
     } else {
       h += '<div class="sheet-bts"><button class="cta' + (m.perigo ? ' perigo' : '') + '" data-acao="' + m.acao + '">' + m.ok + '</button>' +

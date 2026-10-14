@@ -19,7 +19,7 @@
     }
     if (!E.entrou) {
       h += '<section class="sec"><h2 class="h2" style="margin-bottom:12px">Convite</h2><button class="convite-card" data-ir="convite"><span class="foto" style="' + C.bg('capa') + '"></span>' +
-        '<span class="tx"><span class="k">A Ju te convidou</span><b>' + D.VIAGEM + '</b><small>7 pessoas · Ubatuba ou Paraty</small></span>' + I('seta', 18, '#C2410C', 2.4) + '</button></section>';
+        '<span class="tx"><span class="k">A Ju te convidou</span><b>' + D.VIAGEM + '</b><small>7 pessoas · Ubatuba ou Paraty</small></span>' + I('seta', 18, '#AE3A0B', 2.4) + '</button></section>';
     } else {
       var f = C.fimVencedor(), cv = E.casa.fechado ? C.casaVencedora() : null, feitas = C.feitas();
       var linha = E.saiu ? 'Você saiu desta viagem' : (C.tudo() ? 'Tá combinado · faltam ' + D.DIAS_ATE + ' dias' : (pend.length ? 'Sua vez: ' + pend[0].t.toLowerCase() : 'Esperando o prazo das datas'));
@@ -31,7 +31,7 @@
     }
     if (E.criadas.length) {
       h += '<section class="sec"><h2 class="h2" style="margin-bottom:12px">Criadas por você</h2><div class="cartao lista">' + E.criadas.map(function (v) {
-        return '<button class="lin" data-ir="v/' + v.id + '"><span class="mini" style="' + C.bg(v.capa) + '"></span><span class="tx"><b>' + esc(v.nome) + '</b><small>Esperando o grupo · ' + v.fins.length + (v.fins.length === 1 ? ' fim de semana' : ' fins de semana') + '</small></span>' + I('seta', 16, '#737D80', 2.4) + '</button>';
+        return '<button class="lin" data-ir="v/' + v.id + '"><span class="mini" style="' + C.bg(v.capa) + '"></span><span class="tx"><b>' + esc(v.nome) + '</b><small>Esperando o grupo · ' + v.fins.length + (v.fins.length === 1 ? ' fim de semana' : ' fins de semana') + '</small></span>' + I('seta', 16, '#646E71', 2.4) + '</button>';
       }).join('') + '</div></section>';
     }
     var p = D.PASSADA;
@@ -130,7 +130,7 @@
       }
       h += '<span class="' + cls + '">' + d + (x && x.f.feriado === d ? '<i class="fer"></i>' : '') + '</span>';
     }
-    return h + '</div><div class="cal-leg"><span><i style="background:linear-gradient(90deg,#FF8A3D,#F2545B)"></i>Você pode</span><span><i style="background:#F2EEEA"></i>Não pode</span>' +
+    return h + '</div><div class="cal-leg"><span><i style="background:linear-gradient(90deg,#D1450E,#C92B45)"></i>Você pode</span><span><i style="background:#F2EEEA"></i>Não pode</span>' +
       '<span><i style="background:#FFF1EA;box-shadow:inset 0 0 0 1px #F1E6DB"></i>A decidir</span>' + (vence ? '<span><i style="background:#0F5257"></i>Combinado</span>' : '<span>• feriado</span>') + '</div></div>';
   }
 
@@ -213,7 +213,7 @@
     var v = C.votosDe(c), meu = E.casa.voto === c.id;
     var mostrar = E.priv.nomeNosVotos ? v : v.filter(function (p) { return p !== 'voce'; });
     return '<article class="casa' + (meu ? ' votada' : '') + '"><a class="foto" href="#/casa/' + c.id + '" style="' + C.bg(c.fotos[0]) + '" aria-label="Ver detalhes de ' + c.nome + '">' +
-      '<span class="tag">' + I('check', 13, 'currentColor', 3) + 'Cabe na faixa</span><span class="tag nf" style="color:#1E2629">' + I('estrela', 13, '#C2410C', 2.4) + c.nota + '</span></a>' +
+      '<span class="tag">' + I('check', 13, 'currentColor', 3) + 'Cabe na faixa</span><span class="tag nf" style="color:#1E2629">' + I('estrela', 13, '#AE3A0B', 2.4) + c.nota + '</span></a>' +
       '<div class="corpo"><h3 class="nome"><a href="#/casa/' + c.id + '" style="color:inherit;text-decoration:none">' + c.nome + '</a></h3><p class="onde">' + c.lugar + ' · ' + c.resumo + '</p>' +
       '<div class="preco"><span class="pp">' + brl(C.porPessoa(c)) + '<small>por pessoa</small></span><span class="tot">' + brl(c.total) + '<br>2 noites</span></div>' +
       '<div class="votos"><span class="q">' + (mostrar.length ? C.rostos(mostrar, 'pq') : '') + v.length + (v.length === 1 ? ' voto' : ' votos') + '</span>' +
@@ -225,8 +225,8 @@
     if (!C.podeCasa()) {
       var falta = !E.datas.fechado ? 'datas' : 'teto';
       h += '<p class="lead">As casas aparecem quando as datas fecham e todo mundo guarda o teto. Assim o preço já chega dividido e dentro da faixa, e ninguém precisa dizer que achou caro.</p>' +
-        '<div class="cartao conta" style="margin-top:18px"><div class="linha"><span>' + (E.datas.fechado ? 'Datas combinadas' : 'Datas em aberto') + '</span><b>' + (E.datas.fechado ? I('check', 18, '#0F5257', 2.8) : I('relogio', 18, '#C2410C', 2.2)) + '</b></div>' +
-        '<div class="linha"><span>' + (E.teto.enviado ? 'Seu teto guardado' : 'Seu teto ainda não guardado') + '</span><b>' + (E.teto.enviado ? I('check', 18, '#0F5257', 2.8) : I('relogio', 18, '#C2410C', 2.2)) + '</b></div></div>' +
+        '<div class="cartao conta" style="margin-top:18px"><div class="linha"><span>' + (E.datas.fechado ? 'Datas combinadas' : 'Datas em aberto') + '</span><b>' + (E.datas.fechado ? I('check', 18, '#0F5257', 2.8) : I('relogio', 18, '#AE3A0B', 2.2)) + '</b></div>' +
+        '<div class="linha"><span>' + (E.teto.enviado ? 'Seu teto guardado' : 'Seu teto ainda não guardado') + '</span><b>' + (E.teto.enviado ? I('check', 18, '#0F5257', 2.8) : I('relogio', 18, '#AE3A0B', 2.2)) + '</b></div></div>' +
         '<div class="borradas">' + D.CASAS.map(function (c) { return '<span style="' + C.bg(c.fotos[0]) + '"></span>'; }).join('') + '</div><p class="miudo" style="margin-top:8px;text-align:center">3 casas esperando a faixa do grupo</p></div>';
       return { tab: 'inicio', html: h, dock: cta(falta === 'teto' ? 'Guardar meu teto' : 'Ir para as datas', 'data-ir="' + falta + '"') };
     }
@@ -277,11 +277,11 @@
       '<div class="flut"><button class="voltar" data-ir="casas" aria-label="Voltar para as casas">' + I('voltar', 20, '#1E2629', 2.4) + '</button><span class="tag">' +
       (ehDentro ? I('check', 13, 'currentColor', 3) + 'Cabe na faixa' : 'Acima da faixa') + '</span></div><span class="cont">1 de ' + c.fotos.length + '</span></div>' +
       '<div class="folha det"><h1 class="h1" style="margin-top:0">' + c.nome + '</h1><p class="lead" style="margin-top:6px">' + c.lugar + ' · ' + c.resumo + '</p>' +
-      '<p class="nota" style="margin-top:10px">' + I('estrela', 16, '#C2410C', 2.2) + c.nota + '<small>(' + c.avaliacoes + ' avaliações) · anúncio de exemplo</small></p>' +
+      '<p class="nota" style="margin-top:10px">' + I('estrela', 16, '#AE3A0B', 2.2) + c.nota + '<small>(' + c.avaliacoes + ' avaliações) · anúncio de exemplo</small></p>' +
       '<section class="sec"><h2 class="h2" style="margin-bottom:12px">O que tem</h2><div class="coms">' + c.comodidades.map(function (x) { return '<p class="com"><span class="ic">' + I(x[0], 18, 'currentColor', 2) + '</span>' + x[1] + '</p>'; }).join('') + '</div></section>' +
       '<section class="sec"><h2 class="h2" style="margin-bottom:12px">Quanto fica</h2><div class="cartao conta"><div class="linha"><span>2 noites, ' + C.fimVencedor().curto + '</span><b>' + brl(c.total) + '</b></div>' +
       '<div class="linha total"><span>Por pessoa, com ' + n + '</span><b>' + brl(C.porPessoa(c)) + '</b></div><div class="linha"><span>Se o Téo entrar, com ' + (n + 1) + '</span><b>' + brl(C.porPessoa(c, n + 1)) + '</b></div></div></section>' +
-      '<section class="sec"><h2 class="h2" style="margin-bottom:12px">Onde fica</h2><div class="mapa">' + mapa(c.mapa) + '</div><p class="miudo" style="margin-top:8px;display:flex;gap:6px;align-items:center">' + I('pin', 15, '#C2410C', 2.2) + c.perto + '</p></section>' +
+      '<section class="sec"><h2 class="h2" style="margin-bottom:12px">Onde fica</h2><div class="mapa">' + mapa(c.mapa) + '</div><p class="miudo" style="margin-top:8px;display:flex;gap:6px;align-items:center">' + I('pin', 15, '#AE3A0B', 2.2) + c.perto + '</p></section>' +
       (ehDentro ? '<section class="sec"><h2 class="h2" style="margin-bottom:12px">Quem votou</h2><p class="contagem" style="margin-top:0">' + (v.length ? C.rostos(v, 'pq') + '<span>' + C.nomes(v) + '</span>' : '<span>Ninguém votou nesta ainda.</span>') + '</p></section>' : '') + '</div></div>';
     var dock;
     if (!ehDentro) dock = cta('Fora da faixa do grupo', 'disabled');
@@ -392,7 +392,7 @@
       if (id === D.ORGANIZA) sub = 'Organiza · ' + sub.charAt(0).toLowerCase() + sub.slice(1);
       h += '<li>' + C.rosto(id, 'gd') + '<span class="nm">' + (id === 'voce' ? p.nome + ' (você)' : p.nome) + '<small>' + sub + '</small></span><span class="selo ' + cls + '">' + st + '</span></li>';
     });
-    h += '</ul></div></section><section class="sec"><h2 class="h2">Chamar mais gente</h2><div class="convite-link">' + I('link', 20, '#C2410C', 2.2) + '<code>' + esc(C.linkConvite().replace(/^https?:\/\//, '')) + '</code></div>' +
+    h += '</ul></div></section><section class="sec"><h2 class="h2">Chamar mais gente</h2><div class="convite-link">' + I('link', 20, '#AE3A0B', 2.2) + '<code>' + esc(C.linkConvite().replace(/^https?:\/\//, '')) + '</code></div>' +
       '<p class="miudo" style="margin-top:8px">Quem entra pelo link responde datas e teto. Não precisa baixar nada nem criar conta.</p></section>' +
       (E.saiu ? '' : '<section class="sec"><button class="btn2 perigo" data-ir="sair">' + I('sair', 18, 'currentColor', 2.1) + 'Sair da viagem</button></section>') + '</div>';
     return { tab: 'inicio', html: h, dock: cta(I('copiar', 18, '#fff', 2.2) + 'Copiar o convite', 'data-acao="copiar-convite"') };
@@ -444,7 +444,7 @@
         { n: 2, nome: 'Orçamento', st: 'vez', rot: 'Aberta', det: 'Cada um guarda o teto em segredo' },
         { n: 3, nome: 'Casa', st: 'trava', det: 'Votação de ' + v.prazoVoto + (v.prazoVoto === 1 ? ' dia' : ' dias') + ' depois do orçamento' },
         { n: 4, nome: 'Quem vai', st: 'trava', det: 'Sinal de ' + brl(v.sinal) + ' por pessoa' }]) + '</section>' +
-      '<section class="sec"><h2 class="h2">Link do convite</h2><div class="convite-link">' + I('link', 20, '#C2410C', 2.2) + '<code>' + esc(C.linkConvite().replace(/^https?:\/\//, '').replace('convite', 'convite/' + v.id)) + '</code></div>' +
+      '<section class="sec"><h2 class="h2">Link do convite</h2><div class="convite-link">' + I('link', 20, '#AE3A0B', 2.2) + '<code>' + esc(C.linkConvite().replace(/^https?:\/\//, '').replace('convite', 'convite/' + v.id)) + '</code></div>' +
       '<p class="miudo" style="margin-top:8px">Nesta demonstração, só a viagem Praia em novembro tem respostas do grupo.</p></section></div></div>';
     return { tab: 'inicio', claro: true, html: h, dock: cta(I('enviar', 18, '#fff', 2.2) + 'Mandar o convite no grupo', 'data-acao="copiar-convite"') };
   }, { titulo: 'Viagem criada' });

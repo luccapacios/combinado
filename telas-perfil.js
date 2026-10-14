@@ -9,7 +9,7 @@
     return '<header class="barra"><button class="voltar" data-ir="perfil" aria-label="Voltar para o perfil">' + I('voltar', 20, '#1E2629', 2.4) + '</button><span class="barra-tit"><b>Perfil</b>' + titulo + '</span></header>';
   }
   function menuIt(ic, rotulo, attrs, sub, perigo) {
-    return '<button class="menu-it' + (perigo ? ' perigo' : '') + '" ' + attrs + '><span class="ic">' + I(ic, 19, 'currentColor', 2.1) + '</span><span class="tx">' + rotulo + (sub ? '<small>' + sub + '</small>' : '') + '</span>' + (perigo ? '' : I('seta', 16, '#737D80', 2.4)) + '</button>';
+    return '<button class="menu-it' + (perigo ? ' perigo' : '') + '" ' + attrs + '><span class="ic">' + I(ic, 19, 'currentColor', 2.1) + '</span><span class="tx">' + rotulo + (sub ? '<small>' + sub + '</small>' : '') + '</span>' + (perigo ? '' : I('seta', 16, '#646E71', 2.4)) + '</button>';
   }
 
   /* ================= atividade ================= */
@@ -78,7 +78,7 @@
   C.acao('confirmar-logout', function () { E.sessao = 'fora'; C.salvar(); C.fecharModal(true); C.ir('abertura'); C.avisar('Você saiu. Até a próxima viagem.', 'sair'); return true; });
 
   /* ---------- editar perfil ---------- */
-  var CORES = ['#F2545B', '#FF8A3D', '#0F5257', '#3E6FD8', '#8B4FB8', '#1E2629'];
+  var CORES = ['#C92B45', '#B5470F', '#0F5257', '#3557C4', '#7B3FA6', '#1E2629'];
   C.tela('conta', function () {
     if (!E.edit) E.edit = { nome: E.conta.nome, cel: E.conta.celular, cor: E.conta.cor };
     var X = E.edit;
@@ -197,7 +197,7 @@
     return {
       tab: 'perfil',
       html: '<div class="tela">' + voltarPerfil('Central de ajuda') + '<h1 class="h1">Central de ajuda</h1><p class="lead">As dúvidas mais comuns sobre como o grupo decide.</p>' +
-        '<div class="faq">' + D.FAQ.map(function (q, i) { return '<details' + (i === 0 ? ' open' : '') + '><summary>' + q[0] + I('seta', 16, '#737D80', 2.4) + '</summary><p>' + q[1] + '</p></details>'; }).join('') + '</div>' +
+        '<div class="faq">' + D.FAQ.map(function (q, i) { return '<details' + (i === 0 ? ' open' : '') + '><summary>' + q[0] + I('seta', 16, '#646E71', 2.4) + '</summary><p>' + q[1] + '</p></details>'; }).join('') + '</div>' +
         '<div class="aviso-fixo" style="margin-top:18px">' + I('mensagem', 20, 'currentColor', 2.1) + '<div><b>Ainda com dúvida?</b><p>Responda pelo app e a gente volta por SMS em até um dia útil.</p></div></div></div>',
       dock: cta(I('mensagem', 18, '#fff', 2.2) + 'Falar com a gente', 'data-acao="suporte"')
     };
