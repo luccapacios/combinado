@@ -69,6 +69,7 @@ body.solo .palco{display:block;padding:0}
 body.solo .sobre{display:none}
 body.solo .moldura{width:390px;height:844px;min-height:0;border-radius:0;box-shadow:none}
 body.solo.alto .moldura{height:auto;min-height:844px}
+body.solo.alto{background:#F3ECE4}  /* na captura longa, o fundo de fora marca onde o celular termina */
 body.solo.alto .app{position:static;overflow:visible}
 
 /* ================= barra de status (só na moldura) ================= */
