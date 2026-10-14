@@ -61,7 +61,9 @@
     var h = '<div class="tela so-tab"><div class="aba-cab perfil-cab">' + C.rosto('voce', 'xl') +
       '<div><h1 class="h1" style="margin-top:0">' + (C.primeiroNome() ? esc(E.conta.nome) : 'Você') + '</h1><p class="miudo">' + (conv ? 'Convidado neste aparelho' : esc(E.conta.celular || '')) + '</p></div></div>';
     if (conv) h += '<div class="aviso-fixo">' + I('usuario', 20, 'currentColor', 2.1) + '<div><b>Você está como convidado.</b><p>Crie a conta para guardar a viagem em qualquer aparelho e criar as suas.</p><button class="link" data-ir="cadastro">Criar minha conta</button></div></div>';
-    h += '<div class="numeros mt"><p><b>' + viagens + '</b>' + (viagens === 1 ? 'viagem' : 'viagens') + '</p><p><b>' + comb + '</b>' + (comb === 1 ? 'combinada' : 'combinadas') + '</p><p><b>R$ 0</b>adiantados do próprio bolso</p></div>';
+    var kp = [[viagens, viagens === 1 ? 'viagem' : 'viagens'], [comb, comb === 1 ? 'combinada' : 'combinadas']];
+    if (E.entrou && !E.saiu && E.datas.fechado) kp.push([D.DIAS_ATE, 'dias para a próxima']);
+    h += '<div style="margin-top:18px">' + C.kpis(kp) + C.promessa('R$ 0 adiantados do próprio bolso. Nas suas viagens, quem paga a casa é o cofre.') + '</div>';
     h += '<p class="menu-tit">Conta</p><div class="menu">' + menuIt('editar', 'Editar perfil', 'data-ir="conta"', 'Nome, cor e celular') + menuIt('cofre', 'Pagamentos e Pix', 'data-ir="pagamentos"', E.conta.pix ? 'Chave cadastrada' : 'Nenhuma chave ainda') + '</div>' +
       '<p class="menu-tit">Preferências</p><div class="menu">' + menuIt('sino', 'Notificações', 'data-ir="notificacoes"') + menuIt('escudo', 'Privacidade e segurança', 'data-ir="privacidade"') + '</div>' +
       '<p class="menu-tit">Ajuda</p><div class="menu">' + menuIt('ajuda', 'Central de ajuda', 'data-ir="ajuda"') + menuIt('documento', 'Termos e privacidade', 'data-ir="termos"') + '</div>' +

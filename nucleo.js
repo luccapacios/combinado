@@ -126,6 +126,11 @@ window.C = (function () {
     if (d.length <= 7) return '(' + d.slice(0, 2) + ') ' + d.slice(2);
     return '(' + d.slice(0, 2) + ') ' + d.slice(2, 7) + '-' + d.slice(7);
   }
+  /* indicadores: um cartão só, números centrados e separados por fio */
+  function kpis(lista) {
+    return '<div class="kpis">' + lista.map(function (k) { return '<p><b>' + k[0] + '</b><span>' + k[1] + '</span></p>'; }).join('') + '</div>';
+  }
+  function promessa(txt) { return '<p class="promessa">' + I('cofre', 20, 'currentColor', 2.1) + '<span>' + txt + '</span></p>'; }
   function linkConvite() { return location.origin + location.pathname.replace(/index\.html$/, '') + '#/convite'; }
 
   /* ================= registro de telas e ações ================= */
@@ -213,7 +218,7 @@ window.C = (function () {
   }
   /* m = { titulo, texto, ok: rótulo, acao: nome da ação, perigo: bool, opcoes: [[ícone, rótulo, attrs]] } */
   function modal(m) {
-    var h = '<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-tit"><span class="pega" aria-hidden="true"></span>' +
+    var h = '<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-tit" tabindex="-1"><span class="pega" aria-hidden="true"></span>' +
       '<h2 class="h2" id="m-tit">' + m.titulo + '</h2>' + (m.texto ? '<p class="lead">' + m.texto + '</p>' : '');
     if (m.opcoes) {
       h += '<div class="menu" style="margin-top:14px">' + m.opcoes.map(function (o) {
@@ -226,7 +231,8 @@ window.C = (function () {
     modalEl.innerHTML = h + '</div>';
     modalEl.hidden = false;
     requestAnimationFrame(function () { modalEl.classList.add('on'); });
-    var b = modalEl.querySelector('button'); if (b) b.focus({ preventScroll: true });
+    // o foco vai para a janela, e não para o botão destrutivo: Enter por engano não apaga nada
+    modalEl.querySelector('.sheet').focus({ preventScroll: true });
   }
   function fecharModal(imediato) {
     if (!modalEl || modalEl.hidden) return;
@@ -290,8 +296,10 @@ window.C = (function () {
       cred.innerHTML = Object.keys(D.FOTOS).map(function (k) { return D.FOTOS[k]; }).filter(function (n) { if (vistos[n]) return false; vistos[n] = 1; return true; })
         .map(function (n) { return '<li>' + n + ', via Unsplash</li>'; }).join('');
     }
-    cenas();
+    var acaoInicial = cenas();
     render();
+    // ?acao=nome abre uma janela da tela já desenhada (usado nas figuras e na revisão)
+    if (acaoInicial && ACOES[acaoInicial]) setTimeout(function () { ACOES[acaoInicial]({ dataset: {} }); }, 50);
   }
 
   /* cenas para as figuras do documento: ?cena=nome&solo=1 */
@@ -300,7 +308,7 @@ window.C = (function () {
     if (q.get('solo') === '1') document.body.classList.add('solo');
     if (q.get('alto') === '1') document.body.classList.add('alto');
     var c = q.get('cena');
-    if (!c) return;
+    if (!c) return null;
     zerar();
     var conta = function () { E.sessao = 'conta'; E.conta.nome = 'Lucca'; E.conta.celular = '(11) 98765-4321'; };
     var marcar = function () { E.datas.marc = { f1: false, f2: true, f3: true, f4: false }; };
@@ -335,6 +343,24 @@ window.C = (function () {
       notificacoes: function () { fim(); r = 'notificacoes'; },
       privacidade: function () { fim(); r = 'privacidade'; },
       ajuda: function () { fim(); r = 'ajuda'; },
+      'cofre-vazio': function () { conta(); r = 'cofre'; },
+      'datas-enviado': function () { dentroV(); marcar(); E.datas.enviado = true; r = 'datas'; },
+      'casas-trava': function () { dentroV(); r = 'casas'; },
+      'sinal-trava': function () { base(); r = 'sinal'; },
+      'combinado-parcial': function () { dentroV(); marcar(); E.datas.enviado = E.datas.fechado = true; r = 'combinado'; },
+      saiu: function () { fim(); E.saiu = true; r = 'viagem'; },
+      'viagens-saiu': function () { fim(); E.saiu = true; r = ''; },
+      convidado: function () { E.sessao = 'convidado'; E.conta.nome = 'Bia'; E.entrou = true; r = ''; },
+      'perfil-convidado': function () { E.sessao = 'convidado'; E.conta.nome = 'Bia'; E.entrou = true; r = 'perfil'; },
+      'convite-logado': function () { conta(); r = 'convite'; },
+      passada: function () { conta(); r = 'passada'; },
+      criada: function () { conta(); E.criadas = [{ id: 'demo', nome: 'Réveillon 2027', destino: 'Ilha Grande', capa: 'praia', fins: ['d3', 'd4'], prazoDatas: 3, prazoVoto: 2, sinal: 150 }]; r = 'v/demo'; },
+      'viagens-cheia': function () { fim(); E.criadas = [{ id: 'demo', nome: 'Réveillon 2027', destino: 'Ilha Grande', capa: 'praia', fins: ['d3', 'd4'], prazoDatas: 3, prazoVoto: 2, sinal: 150 }]; r = ''; },
+      conta: function () { fim(); r = 'conta'; },
+      pagamentos: function () { fim(); r = 'pagamentos'; },
+      termos: function () { conta(); r = 'termos'; },
+      'cadastro-erro': function () { r = 'cadastro'; },
+      'nova-2-vazia': function () { fim(); E.rascunho = { passo: 2, nome: 'Réveillon 2027', destino: '', capa: 'capa', fins: [], prazoDatas: 3, prazoVoto: 2, sinal: 150 }; r = 'nova/2'; },
       'nova-1': function () { fim(); E.rascunho = { passo: 1, nome: 'Réveillon 2027', destino: 'Ilha Grande', capa: 'praia', fins: [], prazoDatas: 3, prazoVoto: 2, sinal: 150 }; r = 'nova/1'; },
       'nova-2': function () { fim(); E.rascunho = { passo: 2, nome: 'Réveillon 2027', destino: 'Ilha Grande', capa: 'praia', fins: ['d3', 'd4'], prazoDatas: 3, prazoVoto: 2, sinal: 150 }; r = 'nova/2'; },
       'nova-3': function () { fim(); E.rascunho = { passo: 3, nome: 'Réveillon 2027', destino: 'Ilha Grande', capa: 'praia', fins: ['d3', 'd4'], prazoDatas: 3, prazoVoto: 2, sinal: 150 }; r = 'nova/3'; },
@@ -343,6 +369,7 @@ window.C = (function () {
     if (tabela[c]) tabela[c]();
     salvar();
     history.replaceState(null, '', location.pathname + (q.get('solo') === '1' ? '?solo=1' + (q.get('alto') === '1' ? '&alto=1' : '') : '') + '#/' + r);
+    return q.get('acao');
   }
 
   return {
@@ -351,7 +378,7 @@ window.C = (function () {
     casaPor: casaPor, votosDe: votosDe, casaVencedora: casaVencedora, pagantes: pagantes, devendo: devendo, podeCasa: podeCasa,
     tudo: tudo, feitas: feitas, pendencias: pendencias, proximo: proximo,
     brl: brl, esc: esc, iniciais: iniciais, primeiroNome: primeiroNome, pessoa: pessoa, nomes: nomes, rosto: rosto, rostos: rostos,
-    logo: logo, barra: barra, prazo: prazo, cta: cta, bg: bg, chave: chave, mascaraCelular: mascaraCelular, linkConvite: linkConvite,
+    logo: logo, kpis: kpis, promessa: promessa, barra: barra, prazo: prazo, cta: cta, bg: bg, chave: chave, mascaraCelular: mascaraCelular, linkConvite: linkConvite,
     eventos: eventos, itemFeed: itemFeed,
     tela: tela, acao: acao, ir: ir, render: render, rota: rota, aoSair: aoSair, avisar: avisar, copiar: copiar, modal: modal, fecharModal: fecharModal,
     iniciar: iniciar

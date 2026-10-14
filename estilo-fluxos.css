@@ -154,3 +154,13 @@ body.solo .status{display:flex!important}
   background:linear-gradient(rgba(255,248,241,0),var(--creme) 46%);pointer-events:none}
 .dock.sem-tab::before{bottom:-30px}
 .dock.sobre-foto::before{display:none}
+.sheet:focus{outline:none}
+
+/* indicadores (perfil e viagem passada) */
+.kpis{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);padding:16px 4px;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 1px var(--fio),var(--sombra)}
+.kpis p{display:flex;flex-direction:column;align-items:center;text-align:center;padding:2px 8px;border-left:1px solid var(--fio)}
+.kpis p:first-child{border-left:0}
+.kpis b{font:800 28px/1 var(--display);letter-spacing:-.045em;color:var(--tinta);font-variant-numeric:tabular-nums}
+.kpis span{margin-top:7px;font-size:12px;line-height:1.3;color:var(--tinta-2);max-width:96px}
+.promessa{display:flex;gap:10px;align-items:center;margin-top:10px;padding:12px 14px;border-radius:18px;background:var(--mar-claro);color:var(--mar-txt);font-size:13.5px;line-height:1.38;font-weight:500}
+.promessa svg{flex:none}

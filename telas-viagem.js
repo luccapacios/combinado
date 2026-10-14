@@ -423,8 +423,9 @@
       '<div class="item"><span class="kk">Onde</span><span class="vv">' + p.casa + '<small>Paraty, centro histórico</small></span></div>' +
       '<div class="item"><span class="kk">Quanto</span><span class="vv">' + brl(p.porPessoa) + ' por pessoa<small>Tudo pago antes da viagem</small></span></div>' +
       '<div class="item"><span class="kk">Quem foi</span><span class="vv">' + C.rostos(p.pessoas, 'pq') + '<small>' + p.pessoas.length + ' de ' + p.pessoas.length + ' que confirmaram</small></span></div></section>' +
-      '<section class="sec"><h2 class="h2" style="margin-bottom:12px">Como foi decidir</h2><div class="numeros">' +
-      '<p><b>' + p.decidiuEm + '</b>do convite à casa paga</p><p><b>' + p.lembretes + '</b>lembretes enviados pelo app</p><p><b>R$ 0</b>adiantados do próprio bolso</p></div></section></div></div>';
+      '<section class="sec"><h2 class="h2" style="margin-bottom:12px">Como foi decidir</h2>' +
+      C.kpis([[p.decidiuEm.replace(/\D/g, ''), 'dias do convite à casa paga'], [p.lembretes, 'lembretes que o app mandou'], [p.pessoas.length, 'confirmaram e foram']]) +
+      C.promessa('Ninguém adiantou dinheiro: a casa foi paga pelo cofre.') + '</section></div></div>';
     return { tab: 'inicio', claro: true, html: h, dock: cta('Criar uma viagem parecida', 'data-acao="nova-parecida"') };
   }, { titulo: 'Réveillon em Paraty' });
 
